@@ -1,5 +1,11 @@
+import MyFlow from "./flow/Index";
+
 function App() {
-	return <>Tester</>;
+	return (
+		<>
+			<MyFlow />
+		</>
+	);
 }
 
 export default App;
