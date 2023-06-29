@@ -1,9 +1,12 @@
-import React, { useCallback, useState } from 'react'
-import { ReactFlow, addEdge, applyEdgeChanges, applyNodeChanges, useEdgesState, useNodesState } from "reactflow";
+import React, { useCallback } from 'react'
+import { Controls, ReactFlow, addEdge, applyEdgeChanges, applyNodeChanges, useEdgesState, useNodesState } from "reactflow";
 import 'reactflow/dist/style.css';
 import { initialEdges } from "./edges";
 import { initialNodes } from "./nodes";
 import { defaultEdgeOptions } from "./options";
+import MyMiniMap from "./MyMiniMap";
+import MyBackground from "./MyBackground";
+import MyPanel from "./MyPanel";
 
 const updatedNodes: any = [...initialNodes]
 updatedNodes.splice(1, 0, {
@@ -34,7 +37,13 @@ const Index = () => {
                     onConnect={onConnect}
                     defaultEdgeOptions={defaultEdgeOptions}
                     fitView
-                />
+                >
+                    {/* React flow comes with customizable control bar */}
+                    <Controls />
+                    <MyMiniMap />
+                    <MyBackground />
+                    <MyPanel />
+                </ReactFlow>
             </div>
         </>
     )
