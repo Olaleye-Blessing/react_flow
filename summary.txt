@@ -1,0 +1,7 @@
+Three things you’ll be using a lot in React Flow are nodes, edges, and handles.
+
+Node is like the box
+Handles are the dots on the box
+Edges are the lines connecting the nodes(boxes)
+
+An edge needs a source (node id) and a target (node id)
