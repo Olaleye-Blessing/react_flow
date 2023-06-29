@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { ReactFlow, addEdge, applyEdgeChanges, applyNodeChanges } from "reactflow";
+import { ReactFlow, addEdge, applyEdgeChanges, applyNodeChanges, useEdgesState, useNodesState } from "reactflow";
 import 'reactflow/dist/style.css';
 import { initialEdges } from "./edges";
 import { initialNodes } from "./nodes";
@@ -14,15 +14,8 @@ updatedNodes.splice(1, 0, {
 })
 
 const Index = () => {
-    const [nodes, setNodes] = useState(updatedNodes);
-    const [edges, setEdges] = useState(initialEdges);
-
-    const onNodesChange = useCallback((changes) => setNodes((nds) => applyNodeChanges(changes, nds)), [setNodes]);
-
-    const onEdgesChange = useCallback(
-        (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-        [setEdges]
-    );
+    const [nodes, setNodes, onNodesChange] = useNodesState(updatedNodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
     const onConnect = useCallback(
         (connection) => setEdges((eds) => addEdge(connection, eds)),
